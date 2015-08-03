@@ -7,6 +7,9 @@ tool:
 
 [![The math and magic of origami, Robert Lang, TED2008][talk_preview]][talk]
 
+There is also full user documentation including some tutorials available via
+the Help menu.
+
 The software was last updated in 2006 and doesn't readily run on recent Ubuntu
 releases. This repository provides a compatible legacy environment to allow it
 to run on recent releases without modification.

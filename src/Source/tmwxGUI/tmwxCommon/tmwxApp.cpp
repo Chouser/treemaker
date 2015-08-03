@@ -1091,8 +1091,13 @@ Return the current page setup settings
 *****/
 wxPageSetupData& tmwxApp::GetPageSetupData()
 {
-  if (!mPageSetupData)
+  if (!mPageSetupData) {
     mPageSetupData = new wxPageSetupData();
+    mPageSetupData->SetMarginBottomRight(wxPoint(10,10));
+    mPageSetupData->SetMarginTopLeft(wxPoint(10,10));
+    mPageSetupData->SetPaperSize(wxSize(2159, 2794));
+    mPageSetupData->SetPaperId(wxPAPER_LETTER);
+  }
   return *mPageSetupData;
 }
 

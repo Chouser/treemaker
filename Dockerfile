@@ -8,6 +8,7 @@ RUN apt-get update \
                              curl \
                              freeglut3-dev \
                              libgtk2.0-dev \
+			     cups-bsd \
                              xvfb \
                              zip
 
@@ -41,8 +42,16 @@ RUN cd /tmp/treemaker/linux \
 RUN cd /tmp/treemaker/linux \
     && xvfb-run make install
 
+# Set up home dir
+RUN echo "ShowAboutAtStartup=0" > "/etc/skel/.TreeMaker 5"
+
+# Set up working dirctory
+RUN mkdir /origami
+WORKDIR /origami
+
 # Display TreeMaker version
 RUN xvfb-run TreeMaker --version
 
 # Pass command-line arguments to TreeMaker
-ENTRYPOINT ["TreeMaker"]
+COPY as-user /as-user
+ENTRYPOINT ["/as-user", "TreeMaker"]
