@@ -1,0 +1,9 @@
+#!/bin/bash
+set -o errexit
+
+if [ $UID = 0 ]; then
+  UID = 1000
+fi
+
+useradd --create-home --uid $UID tmp-user
+exec sudo -H -u tmp-user "$@"

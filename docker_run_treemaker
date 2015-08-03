@@ -1,0 +1,4 @@
+#!/bin/bash
+set -o errexit
+
+exec ./docker_run_x -e UID=$UID -v $1:/origami --rm --net host --name treemaker chouser/treemaker:5.0.1.20060413-02
